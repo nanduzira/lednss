@@ -8,4 +8,7 @@
 
     <string name="home">Home</string>
 
+    <string name="choondal">choondal</string>
+    <string name="settings">settings</string>
+    <string name="about">about</string>
 </resources>
