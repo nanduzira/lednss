@@ -20,6 +20,7 @@ public class ledActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_led);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 /*
@@ -82,8 +83,9 @@ public class ledActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            setContentView(R.layout.content_led);
         } else if (id == R.id.nav_gallery) {
-
+            
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

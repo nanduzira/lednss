@@ -11,4 +11,25 @@
     <string name="choondal">choondal</string>
     <string name="settings">settings</string>
     <string name="about">about</string>
+
+    <string-array name="wards">
+        <item>Ward 1</item>
+        <item>Ward 2</item>
+        <item>Ward 3</item>
+        <item>Ward 4</item>
+        <item>Ward 5</item>
+        <item>Ward 6</item>
+        <item>Ward 7</item>
+        <item>Ward 8</item>
+        <item>Ward 9</item>
+        <item>Ward 10</item>
+        <item>Ward 11</item>
+        <item>Ward 12</item>
+        <item>Ward 13</item>
+        <item>Ward 14</item>
+        <item>Ward 15</item>
+        <item>Ward 16</item>
+        <item>Ward 17</item>
+        <item>Ward 18</item>
+    </string-array>
 </resources>

@@ -22,7 +22,9 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_led"/>
+    <include layout="@layout/content_led"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
 
 <!--
     <android.support.design.widget.FloatingActionButton

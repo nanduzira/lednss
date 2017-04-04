@@ -6,10 +6,8 @@
     android:orientation="vertical">
 
     <fragment
-    android:id="@+id/ward_fragment"
-    android:name="nssvast.lednss.wardFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-
-
+        android:id="@+id/fragment"
+        android:name="nssvast.lednss.wardFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
