@@ -18,6 +18,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".houseEntry"
+            android:label="@string/houses"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ledActivity"
+            android:windowSoftInputMode="stateAlwaysVisible">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ledActivity"/>
+        </activity>
+        <activity
+            android:name=".memberEntry"
+            android:label="@string/members"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".houseEntry"
+            android:windowSoftInputMode="stateAlwaysVisible">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".houseEntry"/>
+        </activity>
     </application>
 
 </manifest>

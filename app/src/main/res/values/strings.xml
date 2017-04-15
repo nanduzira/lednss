@@ -1,17 +1,78 @@
 <resources>
     <string name="app_name">LED Nss</string>
+    <string name="houses">Houses</string>
+    <string name="members">Members</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="submit">Submit</string>
+    <string name="back">Back</string>
 
+<!--*******************************NAVIGATION MENU DETAILS***************************************-->
     <string name="home">Home</string>
+    <string name="choondal">Choondal</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
 
-    <string name="choondal">choondal</string>
-    <string name="settings">settings</string>
-    <string name="about">about</string>
+<!--*******************************NAVIGATION HEADER DETAILS***************************************-->
+    <string name="nss_vast">NSS VAST</string>
+    <string name="nss_mail">nss@vidyaacademy.ac.in</string>
 
+<!--************************************************************************************************
+*************************************GENERAL HOUSE DETAILS******************************************
+*************************************************************************************************-->
+    <string name="house_title"><b><u>GENERAL HOUSE DETAILS</u></b></string>
+
+    <string name="ward_no">Ward No:</string>
+    <string name="house_no">House No:</string>
+    <string name="head">Head of the Family</string>
+    <string name="address">Address:</string>
+    <string name="ration_no">Ration Card No:</string>
+    <string name="caste">Caste Category</string>
+        <string name="obc">OBC</string>
+        <string name="sc">SC</string>
+        <string name="st">ST</string>
+        <string name="others">Others</string>
+    <string name="own_land">Own Land</string>
+        <string name="yes">Yes</string>
+        <string name="no">No</string>
+    <string name="land">Land(in Cents)</string>
+    <string name="income">Annual Income</string>
+    <string name="electricity_no">Electricity Connection No:</string>
+    <string name="landline_no">Landline No:</string>
+    <string name="gas_connection">Gas Connection</string>
+    <string name="gas_agency">Gas Agency</string>
+    <string name="drinking_water">Drinking Water Source</string>
+    <string name="laterine_facility">Laterine Facility</string>
+    <string name="own_vehicle">Own a Vehicle</string>
+    <string name="specify_vehicle">Specify the Vehicle</string>
+        <string name="two_wheeler">2 Wheeler</string>
+        <string name="three_wheeler">3 Wheeler</string>
+        <string name="four_wheeler">4 Wheeler</string>
+    <string name="own_computer">Own a Computer</string>
+    <string name="literacy_count">Computer Literacy Count</string>
+
+<!--************************************************************************************************
+*************************************MEMBER DETAILS***********************************************
+*************************************************************************************************-->
+    <string name="member_title"><b><u>Member Details</u></b></string>
+    
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="sex">Sex</string>
+        <string name="male">Male</string>
+        <string name="female">Female</string>
+    <string name="edu_qualification">Edu. Qualifications</string>
+    <string name="job">Job</string>
+    <string name="uid_no">UID No:</string>
+    <string name="election_no">Election ID Card No:</string>
+    <string name="govt_aids">Govt. Aids</string>
+    <string name="mob_no">Mobile No:</string>
+    <string name="any_traits">Any traits/Specialities</string>
+
+<!--************************************WARD DETAILS*********************************************-->
     <string-array name="wards">
         <item>Ward 1</item>
         <item>Ward 2</item>
