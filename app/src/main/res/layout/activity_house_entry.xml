@@ -151,24 +151,28 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/obc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/obc"/>
                     <RadioButton
+                        android:id="@+id/sc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/sc"/>
                     <RadioButton
+                        android:id="@+id/st"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/st"/>
                     <RadioButton
+                        android:id="@+id/others"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -194,12 +198,14 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/yes_land"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/yes"/>
                     <RadioButton
+                        android:id="@+id/no_land"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -297,12 +303,14 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/yes_gas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/yes"/>
                     <RadioButton
+                        android:id="@+id/no_gas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -364,12 +372,14 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/yes_laterine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/yes"/>
                     <RadioButton
+                        android:id="@+id/no_laterine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -395,12 +405,14 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/yes_vehicle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/yes"/>
                     <RadioButton
+                        android:id="@+id/no_vehicle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -456,6 +468,7 @@
                     android:layout_marginLeft="@dimen/subtitle_left"
                     android:layout_marginStart="@dimen/subtitle_left"/>
                 <RadioGroup
+                    android:id="@+id/own_computer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -464,12 +477,14 @@
                     android:layout_marginRight="@dimen/subtitle_left"
                     android:layout_marginEnd="@dimen/subtitle_left">
                     <RadioButton
+                        android:id="@+id/yes_computer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
                         android:layout_marginEnd="@dimen/subtitle_left"
                         android:text="@string/yes"/>
                     <RadioButton
+                        android:id="@+id/no_computer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/subtitle_left"
@@ -486,6 +501,7 @@
                     android:layout_marginLeft="@dimen/subtitle_left"
                     android:layout_marginStart="@dimen/subtitle_left"/>
                 <EditText
+                    android:id="@+id/literacy_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/subtitle_left"
@@ -494,26 +510,23 @@
                     android:layout_marginEnd="@dimen/subtitle_left"
                     android:inputType="number"/>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
+                <Button
+                    android:id="@+id/submit_house"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/title"
-                    android:layout_marginLeft="@dimen/subtitle_left"
-                    android:layout_marginStart="@dimen/subtitle_left"
-                    android:layout_marginRight="@dimen/subtitle_left"
-                    android:layout_marginEnd="@dimen/subtitle_left">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|left"
-                        android:text="@string/back"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|end"
-                        android:text="@string/submit"/>
-                </LinearLayout>
+                    android:layout_marginBottom="@dimen/title"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/submit"/>
+                <!--<Button
+                    android:id="@+id/view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/title"
+                    android:layout_marginBottom="@dimen/title"
+                    android:layout_gravity="center_horizontal"
+                    android:text="View All"/>-->
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

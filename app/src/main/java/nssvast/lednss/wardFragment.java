@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class wardFragment extends ListFragment implements AdapterView.OnItemClickListener{
 
-    public static final String WARD_INTENT = "nssvast.lednss.WARD";
     private static final String TAG = "ward tag";
 
     @Override
@@ -37,7 +36,7 @@ public class wardFragment extends ListFragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(wardFragment.this.getActivity(), houseEntry.class);
-        i.putExtra(WARD_INTENT, position+1);
+        i.putExtra(houseEntry.WARD_INTENT, position+1);
         startActivity(i);
     }
 }
