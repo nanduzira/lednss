@@ -1,29 +1,104 @@
 package nssvast.lednss;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 /**
  * Created by anand on 14-Apr-17.
  */
 
-public class memberEntry extends AppCompatActivity {
+public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+
+    private static final String TAG = "WARD TAG";
+
+    public static final String NAME_INTENT = "nssvast.lednss.NAME";
+    public static final String AGE_INTENT = "nssvast.lednss.AGE";
+    public static final String SEX_INTENT = "nssvast.lednss.SEX";
+    public static final String EDU_QUALIFICATIONS_INTENT = "nssvast.lednss.EDU_QUALIFICATIONS";
+    public static final String JOB_INTENT = "nssvast.lednss.JOB";
+    public static final String UID_INTENT = "nssvast.lednss.UID";
+    public static final String ELECTION_ID_INTENT = "nssvast.lednss.ELECTION_ID";
+    public static final String GOVT_AIDS_INTENT = "nssvast.lednss.GOVT_AIDS";
+    public static final String MOB_NO_INTENT = "nssvast.lednss.MOB_NO";
+    public static final String ANY_TRAITS_INTENT = "nssvast.lednss.ANY_TRAITS";
+
+    public String sex;
+
+    public EditText name, age, eduQualifications, job, uidNo, electionID, govtAids, mobNo, anyTraits;
+    public RadioGroup sexRg;
+    public Button submitMember;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_entry);
 
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_member_entry);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_member_entry);
         setSupportActionBar(toolbar);
 
-        int ward = getIntent().getIntExtra(houseEntry.WARD_INTENT, 0);
-        int house = getIntent().getIntExtra(houseEntry.HOUSE_INTENT, 0);
+        name = (EditText) findViewById(R.id.name);
+        age  = (EditText) findViewById(R.id.age);
+        eduQualifications = (EditText) findViewById(R.id.edu_qualifications);
+        job = (EditText) findViewById(R.id.job);
+        uidNo = (EditText) findViewById(R.id.uid_no);
+        electionID = (EditText) findViewById(R.id.election_id_no);
+        govtAids = (EditText) findViewById(R.id.govt_aids);
+        mobNo = (EditText) findViewById(R.id.mob_no);
+        anyTraits = (EditText) findViewById(R.id.any_traits);
+
+        sexRg = (RadioGroup) findViewById(R.id.sex);
+        sexRg.setOnCheckedChangeListener(this);
+
+        submitMember = (Button) findViewById(R.id.submit_member);
+        submitMember.setOnClickListener(this);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+        RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
+        if(null != radioButton && checkedId > -1) {
+            switch (checkedId) {
+                case R.id.male:
+                    sex = "MALE";
+                    break;
+                case R.id.female:
+                    sex = "FEMALE";
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == submitMember) {
+            Intent i = new Intent();
+            i.putExtra(NAME_INTENT, name.getText().toString());
+            i.putExtra(AGE_INTENT, age.getText().toString());
+            i.putExtra(SEX_INTENT, sex);
+            i.putExtra(EDU_QUALIFICATIONS_INTENT, eduQualifications.getText().toString());
+            i.putExtra(JOB_INTENT, job.getText().toString());
+            i.putExtra(UID_INTENT, uidNo.getText().toString());
+            i.putExtra(ELECTION_ID_INTENT, electionID.getText().toString());
+            i.putExtra(GOVT_AIDS_INTENT, govtAids.getText().toString());
+            i.putExtra(MOB_NO_INTENT, mobNo.getText().toString());
+            i.putExtra(ANY_TRAITS_INTENT, anyTraits.getText().toString());
+            setResult(RESULT_OK, i);
+            finish();
+        }
     }
 }
