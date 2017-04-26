@@ -2,9 +2,9 @@ package nssvast.lednss;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,14 +14,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
-/**
+import com.google.zxing.Result;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Calendar;
+
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+/*
+ *
  * Created by anand on 14-Apr-17.
  */
 
 public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     private static final String TAG = "WARD TAG";
+
+//    private ZXingScannerView scannerView;
+    private IntentIntegrator qrScan;
 
     public static final String NAME_INTENT = "nssvast.lednss.NAME";
     public static final String AGE_INTENT = "nssvast.lednss.AGE";
@@ -38,7 +54,7 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
 
     public EditText name, age, eduQualifications, job, uidNo, electionID, govtAids, mobNo, anyTraits;
     public RadioGroup sexRg;
-    public Button submitMember;
+    public Button submitMember,qrEntry;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +80,16 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
         sexRg = (RadioGroup) findViewById(R.id.sex);
         sexRg.setOnCheckedChangeListener(this);
 
+        qrEntry = (Button) findViewById(R.id.qr);
+        qrEntry.setOnClickListener(this);
         submitMember = (Button) findViewById(R.id.submit_member);
         submitMember.setOnClickListener(this);
+
+        qrScan = new IntentIntegrator(this);
+        qrScan.setPrompt("Scan UID");
+        qrScan.setOrientationLocked(false);
+        qrScan.setBeepEnabled(false);
+        qrScan.setBarcodeImageEnabled(true);
     }
 
     @Override
@@ -99,6 +123,69 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
             i.putExtra(ANY_TRAITS_INTENT, anyTraits.getText().toString());
             setResult(RESULT_OK, i);
             finish();
+        } else if (v == qrEntry) {
+            qrScan.initiateScan();
+//            scannerView = new ZXingScannerView(this);
+//            setContentView(scannerView);
+//            scannerView.setResultHandler(this);
+//            scannerView.startCamera();
+//            Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+//            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+//            Log.d(TAG,"qr");
+//            startActivityForResult(intent,0);
         }
     }
+
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        scannerView.stopCamera();
+//    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        if (requestCode == 0) {
+//            if (resultCode == RESULT_OK) {
+//                Log.d(TAG, "onActivityResult: in true");
+//                name.setText(intent.getStringExtra("SCAN_RESULT_FORMAT"));
+//                age.setText(intent.getStringExtra("SCAN_RESULT"));
+//            } else if (resultCode == RESULT_CANCELED) {
+//
+//            }
+//        }
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        if (result != null) {
+            if (result.getContents() == null)
+                Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
+            else {
+                Log.d(TAG, "onActivityResult: "+result.getContents());
+                String contents = result.getContents();
+                String[] c = contents.split("\"");
+                int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+                int currentAge = currentYear-Integer.parseInt(c[11]);
+                age.setText(String.valueOf(currentAge));
+                sexRg.check((c[9].compareTo("MALE")==0)?R.id.male:R.id.female);
+                name.setText(c[7]);
+                uidNo.setText(c[5]);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, intent);
+        }
+    }
+
+//    @Override
+//    public void handleResult(Result result) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Scanned UID Data");
+//
+//        String[] c = result.getText().split("\"");
+//        int a = Calendar.YEAR-(Integer.parseInt(c[11]));
+//
+//        builder.setMessage(c[5]+c[7]+c[9]+a);
+//        AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
+//        sexRg.check((c[9].equals("MALE"))?R.id.male:R.id.female);
+//        uidNo.setText(c[5]);
+//        name.setText(c[7]);
+//    }
 }
