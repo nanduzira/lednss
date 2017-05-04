@@ -19,12 +19,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
+/*
  * Created by anand on 09-Apr-17.
  */
 
@@ -45,58 +46,58 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
     public List<List<String>> memberList;
     public HashMap<String, String> houseValues;
 
-    public SQLiteDatabase db;
+//    public SQLiteDatabase db;
 
-    public String SQL_CREATE_HOUSE_ENTRIES;
-    public String SQL_INSERT_HOUSE_ENTRIES;
-    public String SQL_VIEW_HOUSE_ENTRIES;
-    public String SQL_CREATE_MEMBER_ENTRIES;
-    public String SQL_INSERT_MEMBER_ENTRIES;
-    public String SQL_VIEW_MEMBER_ENTRIES;
+//    public String SQL_CREATE_HOUSE_ENTRIES;
+//    public String SQL_INSERT_HOUSE_ENTRIES;
+//    public String SQL_VIEW_HOUSE_ENTRIES;
+//    public String SQL_CREATE_MEMBER_ENTRIES;
+//    public String SQL_INSERT_MEMBER_ENTRIES;
+//    public String SQL_VIEW_MEMBER_ENTRIES;
 
     public DBController controller;
 
     public houseEntry() {
-        SQL_CREATE_HOUSE_ENTRIES =
-                "CREATE TABLE IF NOT EXISTS " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + "(" +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_WARD + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_HOUSE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_HEAD + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_ADDRESS + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_RATION + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_CASTE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_OWN_LAND + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LAND + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_INCOME + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_ELECTRICITY + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LANDLINE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_GAS + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_WATER + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LATERINE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_VEHICLE_TYPE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LITERACY + " VARCHAR);";
-
-        SQL_VIEW_HOUSE_ENTRIES =
-                "SELECT * FROM " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + ";";
-        SQL_CREATE_MEMBER_ENTRIES =
-                "CREATE TABLE IF NOT EXISTS " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + "(" +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_WARD + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_HOUSE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_NAME + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_AGE + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_SEX + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_EDU_QUALIFICATIONS + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_JOB + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_UID + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_ELECTION_ID + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_GOVT_AIDS + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_MOB_NO + " VARCHAR," +
-                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_ANY_TRAITS + " VARCHAR);";
-        SQL_VIEW_MEMBER_ENTRIES =
-                "SELECT * FROM " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + ";";
+//        SQL_CREATE_HOUSE_ENTRIES =
+//                "CREATE TABLE IF NOT EXISTS " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + "(" +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_WARD + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_HOUSE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_HEAD + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_ADDRESS + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_RATION + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_CASTE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_OWN_LAND + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LAND + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_INCOME + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_ELECTRICITY + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LANDLINE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_GAS + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_WATER + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LATERINE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_VEHICLE_TYPE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LITERACY + " VARCHAR);";
+//
+//        SQL_VIEW_HOUSE_ENTRIES =
+//                "SELECT * FROM " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + ";";
+//        SQL_CREATE_MEMBER_ENTRIES =
+//                "CREATE TABLE IF NOT EXISTS " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + "(" +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_WARD + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_HOUSE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_NAME + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_AGE + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_SEX + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_EDU_QUALIFICATIONS + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_JOB + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_UID + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_ELECTION_ID + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_GOVT_AIDS + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_MOB_NO + " VARCHAR," +
+//                        FeedReaderContract.FeedEntryMembers.COLUMN_NAME_ANY_TRAITS + " VARCHAR);";
+//        SQL_VIEW_MEMBER_ENTRIES =
+//                "SELECT * FROM " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + ";";
         memberCount = i = 0;
-        memberList = new ArrayList<List<String>>();
-        houseValues = new HashMap<String, String>();
+        memberList = new ArrayList<>();
+        houseValues = new HashMap<>();
         controller = new DBController(this);
     }
 
@@ -115,7 +116,9 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
 
         wardNo = (EditText) findViewById(R.id.ward_no);
         wardNo.append(""+wardNbr);
+        wardNo.setEnabled(false);
         houseNo = (EditText) findViewById(R.id.house_no);
+        houseNo.requestFocus();
         head = (EditText) findViewById(R.id.head);
         address = (EditText) findViewById(R.id.address);
         rationNo = (EditText) findViewById(R.id.ration_no);
@@ -154,12 +157,12 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
 
         submitHouse = (Button) findViewById(R.id.submit_house);
         submitHouse.setOnClickListener(this);
-        /*viewAll = (Button) findViewById(R.id.view_all);
-        viewAll.setOnClickListener(this);*/
-
-        /*db = openOrCreateDatabase(FeedReaderContract.DB_NAME, Context.MODE_PRIVATE, null);
-        db.execSQL(SQL_CREATE_HOUSE_ENTRIES);
-        db.execSQL(SQL_CREATE_MEMBER_ENTRIES);*/
+//        viewAll = (Button) findViewById(R.id.view_all);
+//        viewAll.setOnClickListener(this);
+//
+//        db = openOrCreateDatabase(FeedReaderContract.DB_NAME, Context.MODE_PRIVATE, null);
+//        db.execSQL(SQL_CREATE_HOUSE_ENTRIES);
+//        db.execSQL(SQL_CREATE_MEMBER_ENTRIES);
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_member);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -174,16 +177,16 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         if(v==submitHouse) {
-            /*SQL_INSERT_HOUSE_ENTRIES=
-                    "INSERT INTO " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + " VALUES('" +
-                            wardNo.getText() + "','" + houseNo.getText() + "','" +
-                            head.getText() + "','" + address.getText() + "','" +
-                            rationNo.getText() + "','" + caste + "','" + ownLand + "','" +
-                            land.getText() + "','" + income.getText() + "','" +
-                            electricityNo.getText() + "','" + landlineNo.getText() + "','" +
-                            gasAgency.getText() + "','" + drinkingWater.getText() + "','" +
-                            laterine + "','" + vehicleType + "','" + literacyCount.getText() + "');";
-            db.execSQL(SQL_INSERT_HOUSE_ENTRIES);*/
+//            SQL_INSERT_HOUSE_ENTRIES=
+//                    "INSERT INTO " + FeedReaderContract.FeedEntryHouses.TABLE_NAME + " VALUES('" +
+//                            wardNo.getText() + "','" + houseNo.getText() + "','" +
+//                            head.getText() + "','" + address.getText() + "','" +
+//                            rationNo.getText() + "','" + caste + "','" + ownLand + "','" +
+//                            land.getText() + "','" + income.getText() + "','" +
+//                            electricityNo.getText() + "','" + landlineNo.getText() + "','" +
+//                            gasAgency.getText() + "','" + drinkingWater.getText() + "','" +
+//                            laterine + "','" + vehicleType + "','" + literacyCount.getText() + "');";
+//            db.execSQL(SQL_INSERT_HOUSE_ENTRIES);
 
             houseValues.put(FeedReaderContract.FeedEntryHouses.COLUMN_NAME_WARD, wardNo.getText().toString());
             houseValues.put(FeedReaderContract.FeedEntryHouses.COLUMN_NAME_HOUSE, houseNo.getText().toString());
@@ -202,58 +205,58 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
             houseValues.put(FeedReaderContract.FeedEntryHouses.COLUMN_NAME_VEHICLE_TYPE, Integer.toString(vehicleType));
             houseValues.put(FeedReaderContract.FeedEntryHouses.COLUMN_NAME_LITERACY, literacyCount.getText().toString());
 
-
-            /*i = 0;
-            while (i < memberCount) {
-                SQL_INSERT_MEMBER_ENTRIES =
-                        "INSERT INTO " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + " VALUES('" +
-                                wardNo.getText() + "','" + houseNo.getText() + "','" +
-                                memberList.get(i).get(0) + "','" + memberList.get(i).get(1) + "','" +
-                                memberList.get(i).get(2) + "','" + memberList.get(i).get(3) + "','" +
-                                memberList.get(i).get(4) + "','" + memberList.get(i).get(5) + "','" +
-                                memberList.get(i).get(6) + "','" + memberList.get(i).get(7) + "','" +
-                                memberList.get(i).get(8) + "','" + memberList.get(i).get(9) + "');";
-                db.execSQL(SQL_INSERT_MEMBER_ENTRIES);
-                i++;
-            }
-            showMessage("Success","House Added");
-            db.close();*/
+//            i = 0;
+//            while (i < memberCount) {
+//                SQL_INSERT_MEMBER_ENTRIES =
+//                        "INSERT INTO " + FeedReaderContract.FeedEntryMembers.TABLE_NAME + " VALUES('" +
+//                                wardNo.getText() + "','" + houseNo.getText() + "','" +
+//                                memberList.get(i).get(0) + "','" + memberList.get(i).get(1) + "','" +
+//                                memberList.get(i).get(2) + "','" + memberList.get(i).get(3) + "','" +
+//                                memberList.get(i).get(4) + "','" + memberList.get(i).get(5) + "','" +
+//                                memberList.get(i).get(6) + "','" + memberList.get(i).get(7) + "','" +
+//                                memberList.get(i).get(8) + "','" + memberList.get(i).get(9) + "');";
+//                db.execSQL(SQL_INSERT_MEMBER_ENTRIES);
+//                i++;
+//            }
+//            showMessage("Success","House Added");
+//            db.close();
 
             controller.insertData(houseValues, memberList, memberCount);
+            Toast.makeText(getApplicationContext(), "House Added", Toast.LENGTH_SHORT).show();
             finish();
         }
-        /*else if(v==viewAll) {
-            Cursor c = db.rawQuery(SQL_VIEW_MEMBER_ENTRIES, null);
-            if(c.getCount()==0) {
-                showMessage("Error", "No records found");
-                return;
-            }
-            StringBuffer buffer = new StringBuffer();
-            while(c.moveToNext()) {
-                buffer.append("Ward No:"+ c.getString(0));
-                buffer.append("\nHouse No:"+ c.getString(1));
-                buffer.append("\nHead:"+ c.getString(2));
-                buffer.append("\nAddress:"+ c.getString(3));
-                buffer.append("\nRation:"+ c.getString(4));
-                buffer.append("\nCaste:"+ c.getString(5));
-                buffer.append("\nown_land:"+ c.getString(6));
-                buffer.append("\nland:"+ c.getString(7));
-                buffer.append("\nincom:"+ c.getString(8));
-                buffer.append("\nelectricity:"+ c.getString(9));
-                buffer.append("\nlandline:"+ c.getString(10));
-                buffer.append("\ngas_c:"+ c.getString(11));
-                buffer.append("\nwater:"+ c.getString(12));
-                buffer.append("\nlater:"+ c.getString(13));
-                buffer.append("\nv_type:"+ c.getString(14));
-                buffer.append("\nliteracy_count:"+ c.getString(15));
-            }
-            StringBuffer buff = new StringBuffer();
-            i = 0;
-            while (i < memberCount) {
-                buff.append("NAME:"+memberList.get(i++).get(0));
-            }
-            showMessage("House Details", buffer.toString());
-        }*/
+//        else if(v==viewAll) {
+//            Cursor c = db.rawQuery(SQL_VIEW_MEMBER_ENTRIES, null);
+//            if(c.getCount()==0) {
+//                showMessage("Error", "No records found");
+//                return;
+//            }
+//            StringBuffer buffer = new StringBuffer();
+//            while(c.moveToNext()) {
+//                buffer.append("Ward No:"+ c.getString(0));
+//                buffer.append("\nHouse No:"+ c.getString(1));
+//                buffer.append("\nHead:"+ c.getString(2));
+//                buffer.append("\nAddress:"+ c.getString(3));
+//                buffer.append("\nRation:"+ c.getString(4));
+//                buffer.append("\nCaste:"+ c.getString(5));
+//                buffer.append("\nown_land:"+ c.getString(6));
+//                buffer.append("\nland:"+ c.getString(7));
+//                buffer.append("\nincom:"+ c.getString(8));
+//                buffer.append("\nelectricity:"+ c.getString(9));
+//                buffer.append("\nlandline:"+ c.getString(10));
+//                buffer.append("\ngas_c:"+ c.getString(11));
+//                buffer.append("\nwater:"+ c.getString(12));
+//                buffer.append("\nlater:"+ c.getString(13));
+//                buffer.append("\nv_type:"+ c.getString(14));
+//                buffer.append("\nliteracy_count:"+ c.getString(15));
+//            }
+//            StringBuffer buff = new StringBuffer();
+//            i = 0;
+//            while (i < memberCount) {
+//                buff.append("NAME:"+memberList.get(i++).get(0));
+//            }
+//            showMessage("House Details", buffer.toString());
+//        }
         else if(v==twoWheeler) {
             if(twoWheeler.isChecked()) {
                 vehicleType += 2;
@@ -339,14 +342,14 @@ public class houseEntry extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    public void showMessage(String title,String message)
-    {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.show();
-    }
+//    public void showMessage(String title,String message)
+//    {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+//        builder.setCancelable(true);
+//        builder.setTitle(title);
+//        builder.setMessage(message);
+//        builder.show();
+//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent i) {
         super.onActivityResult(requestCode, resultCode, i);

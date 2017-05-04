@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,19 +15,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.zxing.Result;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.Calendar;
 
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
 /*
- *
  * Created by anand on 14-Apr-17.
  */
 
@@ -36,7 +28,6 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
 
     private static final String TAG = "WARD TAG";
 
-//    private ZXingScannerView scannerView;
     private IntentIntegrator qrScan;
 
     public static final String NAME_INTENT = "nssvast.lednss.NAME";
@@ -88,7 +79,7 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
         qrScan = new IntentIntegrator(this);
         qrScan.setPrompt("Scan UID");
         qrScan.setOrientationLocked(false);
-        qrScan.setBeepEnabled(false);
+        qrScan.setBeepEnabled(true);
         qrScan.setBarcodeImageEnabled(true);
     }
 
@@ -122,6 +113,7 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
             i.putExtra(MOB_NO_INTENT, mobNo.getText().toString());
             i.putExtra(ANY_TRAITS_INTENT, anyTraits.getText().toString());
             setResult(RESULT_OK, i);
+            Toast.makeText(getApplicationContext(), "Member Added", Toast.LENGTH_SHORT).show();
             finish();
         } else if (v == qrEntry) {
             qrScan.initiateScan();
@@ -164,7 +156,7 @@ public class memberEntry extends AppCompatActivity implements RadioGroup.OnCheck
                 int currentYear = Calendar.getInstance().get(Calendar.YEAR);
                 int currentAge = currentYear-Integer.parseInt(c[11]);
                 age.setText(String.valueOf(currentAge));
-                sexRg.check((c[9].compareTo("MALE")==0)?R.id.male:R.id.female);
+                sexRg.check((c[9].compareTo("MALE")==0||c[9].compareTo("M")==0)?R.id.male:R.id.female);
                 name.setText(c[7]);
                 uidNo.setText(c[5]);
             }

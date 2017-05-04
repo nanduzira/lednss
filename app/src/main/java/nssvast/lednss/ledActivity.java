@@ -45,16 +45,16 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Synching SQLite Data with Remote MySQL DB, Please wait...");
         progressDialog.setCancelable(false);
-/*
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
+
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -90,9 +90,7 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_sync) {
+        if (id == R.id.action_sync) {
             syncSQLiteMySQLDB();
             return true;
         }
@@ -103,7 +101,7 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
     public void syncSQLiteMySQLDB() {
         AsyncHttpClient client= new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        //if (k == 1) {
+//        if (k == 1) {
             ArrayList<HashMap<String, String>> houseValues = controller.getAllUsers(1);
             if (houseValues.size() != 0)
                 if (controller.dbSyncCount(1) != 0) {
@@ -145,8 +143,8 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
                 } else
                     Toast.makeText(getApplicationContext(), "Houses: SQLite & Remote MySQL DBs are in Sync", Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(getApplicationContext(), "No Data in SQLite DB, please do enter Details to perform Sync Action", Toast.LENGTH_LONG).show();
-        //} else if (k == 2) {
+                Toast.makeText(getApplicationContext(), "No Data in SQLite DB --> HOUSES, please do enter Details to perform Sync Action", Toast.LENGTH_LONG).show();
+//        } else if (k == 2) {
             ArrayList<HashMap<String, String>> memberValues = controller.getAllUsers(2);
             if (memberValues.size() != 0)
                 if (controller.dbSyncCount(2) != 0) {
@@ -188,8 +186,8 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
                 } else
                     Toast.makeText(getApplicationContext(), "Members: SQLite & Remote MySQL DBs are in Sync", Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(getApplicationContext(), "No Data in SQLite DB, please do enter Details to perform Sync Action", Toast.LENGTH_LONG).show();
-        //}
+                Toast.makeText(getApplicationContext(), "No Data in SQLite DB --> MEMBERS, please do enter Details to perform Sync Action", Toast.LENGTH_LONG).show();
+//        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -198,14 +196,10 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
 
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_about) {
 
         }
 
