@@ -107,7 +107,7 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
                 if (controller.dbSyncCount(1) != 0) {
                     progressDialog.show();
                     params.put("housesJSON", controller.composeJSONfromSQLite(1));
-                    client.post("http://zira/lednss/inserthouse.php", params, new AsyncHttpResponseHandler() {
+                    client.post("http://lednss.000webhostapp.com/inserthouse.php", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(String response) {
                             System.out.println(response);
@@ -150,7 +150,7 @@ public class ledActivity extends AppCompatActivity implements NavigationView.OnN
                 if (controller.dbSyncCount(2) != 0) {
                     progressDialog.show();
                     params.put("membersJSON", controller.composeJSONfromSQLite(2));
-                    client.post("http://zira/lednss/insertmember.php", params, new AsyncHttpResponseHandler() {
+                    client.post("http://lednss.000webhostapp.com/insertmember.php", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(String response) {
                             System.out.println(response);
